@@ -1,22 +1,19 @@
 import React from 'react';
 import './App.css';
+import { Modal } from './components/Modal';
+import { useModalState } from './hook/useModalState';
 
 function App() {
+  const { isOpen, onToggle } = useModalState();
+
+  const handleClick = () => {
+    onToggle()
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={handleClick}>Click</button>
+      <Modal open={isOpen} />
     </div>
   );
 }
